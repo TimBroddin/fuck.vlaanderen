@@ -1,6 +1,13 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
-import ImageDisplacement from "./lib";
+import React, { useState } from "react";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { reset, themes } from "react95";
+import ScrollLock from "react-scrolllock";
+import Navigation from "./Navigation";
+import Fluid from "./Fluid";
+
+const ResetStyles = createGlobalStyle`
+  ${reset}
+`;
 
 const FluidContainer = styled.div`
   width: 100vw;
@@ -8,44 +15,18 @@ const FluidContainer = styled.div`
 `;
 
 function App() {
-  const fluid = useRef(null);
+  const [head, setHead] = useState("jan");
 
-  useEffect(() => {
-    const w =
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth;
-    const h =
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight;
-
-    const images =
-      w > h
-        ? [
-            require("./assets/jambon_h.jpg"),
-            require("./assets/peter_h.jpg"),
-            require("./assets/bart_h.jpg"),
-            require("./assets/theo_h.jpg")
-          ]
-        : [
-            require("./assets/jambon_v.jpg"),
-            require("./assets/peter_v.jpg"),
-            require("./assets/bart_v.jpg"),
-            require("./assets/theo_v.jpg")
-          ];
-    const go = () => {
-      fluid.current.innerHTML = "";
-      ImageDisplacement({
-        element: fluid.current,
-        imageSrc: images[Math.floor(Math.random() * images.length)]
-      });
-    };
-
-    go();
-  });
-
-  return <FluidContainer ref={fluid} />;
+  return (
+    <React.Fragment>
+      <ResetStyles />
+      <ThemeProvider theme={themes.default}>
+        <Navigation head={head} setHead={setHead} />
+        <ScrollLock />
+        <Fluid head={head} />
+      </ThemeProvider>
+    </React.Fragment>
+  );
 }
 
 export default App;
