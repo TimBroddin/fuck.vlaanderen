@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Draggable from "react-draggable";
 import {
   Window,
   WindowContent,
   WindowHeader,
+  Toolbar,
   Tooltip,
   Button,
   Fieldset
@@ -17,16 +18,19 @@ const NavContainer = styled.div`
   left: 50px;
 `;
 
+const Img = styled.img`
+  max-width: 32px;
+`;
+
 const Buttons = styled.div`
   margin-top: 20px;
 `;
 
-const Navigation = ({ head, setHead }) => {
+const Navigation = ({ head, setHead, showAbout }) => {
   const audio = useRef(null);
   const [isPlaying, setPlaying] = useState(false);
 
   const playPause = () => {
-    console.log(audio);
     if (!isPlaying) {
       audio.current.play();
       setPlaying(true);
@@ -44,8 +48,33 @@ const Navigation = ({ head, setHead }) => {
           <WindowHeader className="handle">
             <span>Fuck Vlaanderen</span>
           </WindowHeader>
+          <Toolbar>
+            <Button variant="menu" size="sm" disabled>
+              Bestand
+            </Button>
+            <Button variant="menu" size="sm" disabled>
+              Bewerken
+            </Button>
+
+            <Button variant="menu" size="sm" onClick={() => showAbout()}>
+              Over
+            </Button>
+          </Toolbar>
           <WindowContent>
             <Fieldset label="Lelijke hoofden">
+              <Tooltip text="Ludo Van Campenhout">
+                <Button
+                  square={true}
+                  size={"lg"}
+                  active={head === "ludo"}
+                  onClick={e => setHead("ludo")}
+                >
+                  <Img
+                    src={require("./assets/ludo_icon.png")}
+                    alt="Ludo Van Campenhout"
+                  />
+                </Button>
+              </Tooltip>{" "}
               <Tooltip text="Jan Jambon">
                 <Button
                   square={true}
@@ -53,7 +82,7 @@ const Navigation = ({ head, setHead }) => {
                   active={head === "jan"}
                   onClick={e => setHead("jan")}
                 >
-                  <img
+                  <Img
                     src={require("./assets/jambon_icon.png")}
                     alt="Jan Jambon"
                   />
@@ -66,7 +95,7 @@ const Navigation = ({ head, setHead }) => {
                   active={head === "bart"}
                   onClick={e => setHead("bart")}
                 >
-                  <img
+                  <Img
                     src={require("./assets/bart_icon.png")}
                     alt="Bart De Wever"
                   />
@@ -79,7 +108,7 @@ const Navigation = ({ head, setHead }) => {
                   active={head === "peter"}
                   onClick={e => setHead("peter")}
                 >
-                  <img
+                  <Img
                     src={require("./assets/peter_icon.png")}
                     alt="Peter De Roover"
                   />
@@ -92,12 +121,12 @@ const Navigation = ({ head, setHead }) => {
                   active={head === "theo"}
                   onClick={e => setHead("theo")}
                 >
-                  <img
+                  <Img
                     src={require("./assets/theo_icon.png")}
                     alt="Theo Francken"
                   />
                 </Button>
-              </Tooltip>
+              </Tooltip>{" "}
             </Fieldset>
             <Buttons>
               <Button onClick={() => playPause()}>

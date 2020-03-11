@@ -29,13 +29,15 @@ const Fluid = ({ head }) => {
             jan: require("./assets/jambon_h.jpg"),
             peter: require("./assets/peter_h.jpg"),
             bart: require("./assets/bart_h.jpg"),
-            theo: require("./assets/theo_h.jpg")
+            theo: require("./assets/theo_h.jpg"),
+            ludo: require("./assets/ludo_h.jpg")
           }
         : {
             jan: require("./assets/jambon_v.jpg"),
             peter: require("./assets/peter_v.jpg"),
             bart: require("./assets/bart_v.jpg"),
-            theo: require("./assets/theo_v.jpg")
+            theo: require("./assets/theo_v.jpg"),
+            ludo: require("./assets/ludo_v.jpg")
           };
     const go = () => {
       fluid.current.innerHTML = "";

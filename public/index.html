@@ -6,28 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-157732787-2"
+    ></script>
     <script>
-      (function(f, a, t, h, o, m) {
-        a[h] =
-          a[h] ||
-          function() {
-            (a[h].q = a[h].q || []).push(arguments);
-          };
-        (o = f.createElement("script")),
-          (m = f.getElementsByTagName("script")[0]);
-        o.async = 1;
-        o.src = t;
-        o.id = "fathom-script";
-        m.parentNode.insertBefore(o, m);
-      })(document, window, "//stats.broddin.be/tracker.js", "fathom");
-      fathom("set", "siteId", "ITHBL");
-      fathom("trackPageview");
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-157732787-2");
     </script>
+
     <meta property="og:title" content="Fuck Vlaanderen" />
     <meta
       property="og:description"
-      content="It's the song I hate, it's the song I hate"
+      content="It's the song I hate, it's the song I hate."
     />
+    <meta property="og:type" content="article" />
     <meta property="og:url" content="https://fuck.vlaanderen/" />
     <meta property="og:image" content="https://fuck.vlaanderen/og.png" />
     <!--

@@ -70,7 +70,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "deploy": "yarn build; aws s3 sync build s3://fuck.vlaanderen --acl public-read --profile timbroddin; aws cloudfront create-invalidation --distribution-id E3SYS3GF6ECX4X  --paths \"/*\" --profile timbroddin"
   },
   "eslintConfig": {
     "extends": "react-app"

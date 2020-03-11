@@ -1,27 +1,29 @@
 import React, { useState } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { reset, themes } from "react95";
 import ScrollLock from "react-scrolllock";
 import Navigation from "./Navigation";
+import About from "./About";
 import Fluid from "./Fluid";
 
 const ResetStyles = createGlobalStyle`
   ${reset}
 `;
 
-const FluidContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-`;
-
 function App() {
-  const [head, setHead] = useState("jan");
+  const [head, setHead] = useState("ludo");
+  const [aboutVisible, setAboutVisible] = useState(false);
 
   return (
     <React.Fragment>
       <ResetStyles />
       <ThemeProvider theme={themes.default}>
-        <Navigation head={head} setHead={setHead} />
+        <Navigation
+          head={head}
+          setHead={setHead}
+          showAbout={() => setAboutVisible(true)}
+        />
+        <About visible={aboutVisible} close={() => setAboutVisible(false)} />
         <ScrollLock />
         <Fluid head={head} />
       </ThemeProvider>
