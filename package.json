@@ -60,7 +60,7 @@
     "styled-components": "^4.4.1",
     "terser-webpack-plugin": "1.4.1",
     "ts-pnp": "1.1.4",
-    "twgl-base.js": "^2.1.0",
+    "twgl-base.js": "^4.14.1",
     "url-loader": "2.1.0",
     "webpack": "4.41.0",
     "webpack-dev-server": "3.2.1",
